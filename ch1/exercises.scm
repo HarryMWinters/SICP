@@ -120,3 +120,32 @@
         )
     )
 )
+
+; Alex's recursive confuser
+(define (A x y)
+  (cond ((= y 0) 0)
+        ((= x 0) (* y 2))
+        ((= y 1) 2)
+        (else (A (- x 1) (A x (- y 1))))
+  )
+)
+
+; Exercise 1.9
+; Ackerman's
+
+(define (ack x y) (
+    cond 
+        ((= y 0) 
+            0)
+        ((= x 0) 
+            (* 2 y))
+        ((= y 1) 
+            2)
+        (else 
+            (ack 
+                (- x 1) 
+                (ack x (- y 1))
+                )
+            )
+        )
+    )
