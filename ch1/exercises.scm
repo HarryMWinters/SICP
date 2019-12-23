@@ -121,15 +121,6 @@
     )
 )
 
-; Alex's recursive confuser
-(define (A x y)
-  (cond ((= y 0) 0)
-        ((= x 0) (* y 2))
-        ((= y 1) 2)
-        (else (A (- x 1) (A x (- y 1))))
-  )
-)
-
 ; Exercise 1.9
 ; Ackerman's
 
@@ -149,3 +140,26 @@
             )
         )
     )
+; Exercise 1.11
+
+(define (recursive-f n) 
+    (cond 
+        ((< n 3) n)
+        (#t 
+            (+
+                (recursive-f (- n 1))
+                (* 3 (recursive-f (- n 3)))
+            )
+        )
+    )
+)
+
+ ;; ex 1.11. Iterative implementation 
+  
+;  (define (f n) 
+;    (define (iter a b c count) 
+;      (if (= count 0) 
+;        a 
+;        (iter b c (+ c (* 2 b) (* 3 a)) (- count 1)))) 
+;    (iter 0 1 2 n)) 
+
