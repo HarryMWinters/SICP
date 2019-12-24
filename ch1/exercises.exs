@@ -1,5 +1,4 @@
 defmodule Scratch do
-
   def recFact(1) do
     1
   end
@@ -52,7 +51,6 @@ defmodule Scratch do
     1
   end
 
-
   def badFibo(2) do
     1
   end
@@ -70,8 +68,9 @@ defmodule Scratch do
   end
 
   def foo11(prev_fmin1, prev_fmin2, prev_fmin3, n) do
-    new_val = prev_fmin1 + (2 * prev_fmin2) + (3 * prev_fmin3)
+    new_val = prev_fmin1 + 2 * prev_fmin2 + 3 * prev_fmin3
     n = n - 1
+
     if n == 0 do
       new_val
     else
@@ -79,28 +78,36 @@ defmodule Scratch do
     end
   end
 
-  def pascalsTriangle(height) do
-    pascalsTriangle([1], height)
+  # def pascalsTriangle(height) do
+  #   pascalsTriangle([1], height)
+  # end
+
+  def insertionSort(list) do
+    insertionSort([], list)
   end
 
-  # def pascalsTriangle(preceding_row, height) do
-  #   if height == 0 do
+  def insertionSort(sorted, []) do
+    sorted
+  end
 
-  #   end
+  def insertionSort(sorted, [sortee | unsorted_remainder]) do
+    new_sorted = insert([], sorted, sortee)
+    insertionSort(new_sorted, unsorted_remainder)
+  end
 
-  #   new_row([1 | preceding_row])
+  def insert([], [], insertee) do
+    [insertee]
+  end
 
-  # end
+  def insert(lessers, [], insertee) do
+    lessers ++ [insertee]
+  end
 
-  # def new_row([_ | [_, []] ]) do
-  #   []
-  # end
-
-  # def new_row([head | [new_elem | tail]]) do
-  #   new_elem = head + new_elem
-  #   [head] ++ new_row([new_elem, tail])
-  # end
-
-
-
+  def insert(lessers, [head | tail], insertee) do
+    if insertee < head do
+      lessers ++ [insertee, head] ++ tail
+    else
+      insert(lessers ++ [head], tail, insertee)
+    end
+  end
 end
